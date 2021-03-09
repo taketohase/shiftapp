@@ -6,7 +6,7 @@ class CreateRequests < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
-    add_foreign_key :owner_workers, :owners
-    add_foreign_key :owner_workers, :workers
+    add_foreign_key :requests, :owners
+    add_foreign_key :requests, :workers
   end
 end

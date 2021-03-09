@@ -14,12 +14,6 @@
  *= require_self
  */
 
-/*
-  z-index
-  header -> 10
-  flash -> 10
-*/
-
 /* 共通要素色々 */
 body {
   margin: 0;
@@ -37,12 +31,8 @@ header {
   width: 100%;
   min-width: 1200px;
   background-color: #222933;
-  position: fixed;
-  top: 0;
-  z-index: 10;
 }
 .main {
-  margin-top: 140px;
   color: #222933;
 }
 .heading {
@@ -183,9 +173,6 @@ li {
   color: white;
   background-color: #808080;
   text-align: center;
-  position: fixed;
-  top: 140px;
-  z-index: 10;
   width: 100%;
   font-size: 18px;
 }

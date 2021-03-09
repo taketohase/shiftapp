@@ -67,7 +67,7 @@ gem 'bcrypt'
 # excel出力するため。
 gem 'axlsx_rails'
 
-# herokuで動かすため、PostageSQLを使うようにする。
+# herokuで動かすため、PostgreSQLを使うようにする。
 group :production do
   gem 'pg'
 end

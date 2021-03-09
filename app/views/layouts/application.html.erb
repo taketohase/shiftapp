@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SHIFT-APP</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="header-top">
+          <div class="top-left">
+            <%= link_to("", "/", class: "logo") %>
+          </div>
+          <% if @current_user %>
+            <div class="top-right">
+              <p>ようこそ、<%= "#{@current_user.name}（#{(@current_user.class == Worker)? "従業員ユーザー" : "管理者ユーザー"}）" %></p>
+            </div>
+          <% end %>
+        </div>
+        <div class="header-menu">
+          <% if @current_user %>
+            <% if @current_user.class == Worker %>
+              <ul>
+                <!-- 横並びにしたときに隙間が生まれないようにするための記述方法 -->
+                <li><%= link_to("マイページ", worker_path(@current_user)) %></li><li>
+                    <%= link_to("募集中一覧", tasks_path) %></li><li>
+                    <%= link_to("所属一覧", "/owner_workers") %></li><li>
+                    <%= link_to("管理者を検索", "/workers/search_owner") %></li><li>
+                    <%= link_to("ログアウト", "/logout", {method: :post}) %></li>
+              </ul>
+            <% elsif @current_user.class == Owner %>
+              <ul>
+                <li><%= link_to("マイページ", owner_path(@current_user)) %></li><li>
+                    <%= link_to("募集中一覧", tasks_path) %></li><li>
+                    <%= link_to("従業員一覧", "/owner_workers") %></li><li>
+                    <%= link_to("追加リクエスト", "/requests") %></li><li>
+                    <%= link_to("ログアウト", "/logout", {method: :post}) %></li>
+              </ul>
+            <% end %>
+          <% else %>
+            <p>オンラインでシフト希望の提出ができます</p>
+          <% end %>
+        </div>
+      </div>
+    </header>
+    <% if flash[:notice] %>
+      <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>

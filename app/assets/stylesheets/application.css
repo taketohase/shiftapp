@@ -1,0 +1,189 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+/*
+  z-index
+  header -> 10
+  flash -> 10
+*/
+
+/* 共通要素色々 */
+body {
+  margin: 0;
+  padding-bottom: 100px;
+  font-family: sans-serif;
+  font-size: 20px;
+  background-color: #AFC0D0;
+}
+.container {
+  width: 70%;
+  margin: auto;
+}
+header {
+  width: 100%;
+  background-color: #222933;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+}
+.main {
+  margin-top: 140px;
+  color: #222933;
+}
+.heading {
+  padding-top: 50px;
+  font-size: 30px;
+  font-weight: bold;
+}
+.second-heading {
+  margin-top: 20px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* ヘッダー */
+.header-top {
+  height: 80px;
+  border-bottom: 1px solid #AFC0D0;
+}
+.top-left {
+  float: left;
+  height: 80px;
+}
+.logo {
+  display: inline-block;
+  height: 50px;
+  width: 300px;
+  margin: 15px auto;
+  background-image: url("logo.png");
+  background-size: cover;
+}
+.top-right {
+  float: right;
+  height: 80px;
+}
+.top-right p {
+  line-height: 80px;
+  margin: 0;
+  color: #AFC0D0;
+}
+.header-menu {
+  border-top: 1px solid #AFC0D0;
+  min-height: 60px;
+  text-align: center;
+}
+.header-menu p {
+  margin: 0;
+  line-height: 60px;
+  color: #AFC0D0;
+}
+.header-menu ul {
+  margin: 0;
+  padding-left: 0;
+}
+.header-menu li {
+  display: inline;
+  line-height: 60px;
+  padding: 0 10px 0 5px;
+  margin-right: -1px;
+  border-left: 1px solid #AFC0D0;
+  border-right: 1px solid #AFC0D0;
+}
+.header-menu a {
+  color: #AFC0D0;
+}
+
+/* フォーム */
+.form-error {
+  color: red;
+}
+.form-wrapper {
+  margin-top: 20px;
+  text-align: center;
+}
+.form-wrapper p {
+  margin: 0;
+}
+/* inputとtextarea */
+input, textarea {
+  width: 400px;
+  margin-bottom: 20px;
+  padding: 10px;
+  font-size: 18px;
+  border: 1px solid #222933;
+}
+.date-form {
+  width: 200px;
+  margin: 0 10px 20px 10px;
+}
+.form-btn {
+  padding: 10px 0;
+  margin: 20px;
+  width: 400px;
+}
+
+/* ボタン */
+.top-btns{
+  padding-left: 0;
+  text-align: center;
+}
+.btn {
+  opacity: 0.7;
+  border-radius: 10px;
+  color: #AFC0D0;
+  background-color: #222933;
+  display: inline-block;
+  text-align: center;
+  box-shadow: 3px 3px #000000;
+}
+.btn:hover {
+  opacity: 1;
+}
+.btn:active {
+  position: relative;
+  top: 3px;
+  left: 3px;
+  box-shadow: none;
+}
+.large-btn {
+  padding: 20px 0;
+  width: 600px;
+  margin-bottom: 50px;
+}
+.return-btn {
+  padding: 10px 0;
+  margin: 40px 0;
+  width: 200px
+}
+
+/* リスト */
+li {
+  list-style: none;
+}
+
+
+/* フラッシュ */
+.flash {
+  padding: 10px 0;
+  color: white;
+  background-color: #808080;
+  text-align: center;
+  position: fixed;
+  top: 140px;
+  z-index: 10;
+  width: 100%;
+  font-size: 18px;
+}

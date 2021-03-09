@@ -1,0 +1,17 @@
+ja:
+  activerecord:
+    attributes:
+      owner:
+        name: '名前'
+        userid: 'ユーザーID'
+        email: 'メールアドレス'
+        password: 'パスワード'
+        password_confirmation: 'パスワード（確認）'
+      worker:
+        name: '名前'
+        userid: 'ユーザーID'
+        email: 'メールアドレス'
+        password: 'パスワード'
+        password_confirmation: 'パスワード（確認）'
+      task:
+        title: 'タイトル'

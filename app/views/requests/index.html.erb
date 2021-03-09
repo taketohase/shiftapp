@@ -1,0 +1,32 @@
+<div class="main">
+  <div class="container">
+    <div class="heading">
+      追加リクエスト
+    </div>
+    <div class="owner-worker-wrapper">
+      <% if @requests.empty? %>
+        <p>
+          現在リクエストはありません
+        </p>
+      <% else %>
+      <table>
+        <tr>
+          <th>名前</th>
+          <th>ユーザーID</th>
+          <th colspan="2"></th>
+        </tr>
+        <% @requests.each_with_index do |request, i| %>
+        <% worker = Worker.find(request.worker_id) %>
+        <tr>
+          <td><%= worker.name %></td>
+          <td><%= worker.userid %></td>
+          <td><%= link_to("承認する", "/owner_workers/create/#{request.id}", method: :post) %></td>
+          <td><%= link_to("削除する", "/requests/#{request.id}/destroy", method: :post,
+                          data: {confirm: "本当に削除してよろしいですか？"}) %></td>
+        </tr>
+        <% end %>
+      </table>
+    <% end %>
+    </div>
+  </div>
+</div>

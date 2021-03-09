@@ -1,0 +1,33 @@
+<div class="main">
+  <div class="container">
+    <div class="heading">
+      従業員一覧
+    </div>
+    <div class="owner-worker-wrapper">
+      <% if @workers.empty? %>
+      <p>
+        まだ従業員はいません
+      </p>
+      <% else %>
+      <table>
+        <tr>
+          <th>名前</th>
+          <th>ユーザーID</th>
+          <th></th>
+        </tr>
+        <% @workers.each do |worker| %>
+        <% owner_worker = OwnerWorker.find_by(owner_id: @current_user.id,
+                                              worker_id: worker.id) %>
+        <tr>
+          <td><%= worker.name %></td>
+          <td><%= worker.userid %></td>
+          <td><%= link_to("リストから削除する", "/owner_workers/#{owner_worker.id}/destroy",
+                    method: :post,
+                    data: {confirm: "本当に削除してよろしいですか？"}) %></td>
+        </tr>
+      <% end %>
+      </table>
+      <% end %>
+    </div>
+  </div>
+</div>

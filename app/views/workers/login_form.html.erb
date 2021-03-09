@@ -1,0 +1,24 @@
+<div class="main">
+  <div class="container">
+    <div class="heading">
+      ログイン（従業員）
+    </div>
+    <% if @error_message %>
+    <div class="form-error">
+      <%= @error_message %>
+    </div>
+    <% end %>
+    <div class="form-wrapper">
+      <%= form_with(url: "/workers/login", local: true) do |form| %>
+        <p>ユーザーID</p>
+        <%= form.text_field :userid %><br>
+
+        <p>パスワード</p>
+        <%= form.password_field :password %><br>
+
+        <%= form.submit "ログイン", class: "btn form-btn" %>
+      <% end %>
+    </div>
+    <%= link_to("戻る", "/workers/top", {class: "btn return-btn"}) %>
+  </div>
+</div>

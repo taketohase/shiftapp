@@ -1,0 +1,18 @@
+<div class="main">
+  <div class="container">
+    <div class="heading">
+      マイページ
+    </div>
+    <div class="mypage-wrapper">
+      <p>名前：<%= @owner.name %></p>
+      <p>ユーザーID：<%= @owner.userid %></p>
+      <p>メールアドレス:<%= @owner.email %></p>
+    </div>
+    <div class="edit-profile-btn-wrapper">
+      <%= link_to("ユーザー情報の編集", edit_owner_path(@owner), {class: "btn edit-profile-btn"}) %>
+      <%= link_to("退会する", owner_path(@owner), method: :delete,
+                  data: {confirm: "退会すると、シフトのデータは削除されます。よろしいですか？"},
+                  class: "btn edit-profile-btn") %>
+    </div>
+  </div>
+</div>

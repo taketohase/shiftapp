@@ -1,0 +1,38 @@
+<div class="main">
+  <div class="container">
+    <div class="heading">
+      シフト募集の新規作成
+    </div>
+    <div class="form-error">
+      <!-- validateによるエラーメッセージの表示 -->
+      <% @task.errors.full_messages.each do |message| %>
+        <%= message %><br>
+      <% end %>
+      <!-- コントローラで独自に設定したエラーメッセージの表示 -->
+      <% if @error_messages %>
+        <% @error_messages.each do |message| %>
+          <%= message %><br>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="form-wrapper">
+      <%= form_with(model: @task, local: true) do |form| %>
+        <p>タイトル（30文字以内）</p>
+        <%= form.text_field :title, size: 30 %><br>
+
+        <p>期間</p>
+        <%= form.date_field :from_date, class: "date-form" %>から<%= form.date_field :to_date, class:"date-form" %>まで
+
+        <p>期限</p>
+        <%= form.date_field :deadline %><br>
+
+        <p>コメント（任意、200文字以内）</p>
+        <%= form.text_area :comment, size:("40x5") %><br>
+        
+        <p>コメント以外は後から編集できません。内容をよくご確認ください。</p>
+        <%= form.submit "投稿", class: "btn form-btn" %><br>
+      <% end %>
+    </div>
+    <%= link_to("募集中一覧へ戻る", tasks_path, class: "btn return-btn") %>
+  </div>
+</div>

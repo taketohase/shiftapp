@@ -1,0 +1,61 @@
+<div class="main">
+  <div class="container">
+    <div class="heading">
+      希望内容の編集
+    </div>
+    <div class="task-wrapper">
+      <div class="second-heading">
+        <%= @task.title %>
+      </div>
+      <p>作成者：<%= Owner.find(@task.owner_id).name %></p>
+      <p>期間：<%= Entry.date_y_to_string(@task.from_date) %>～<%= Entry.date_y_to_string(@task.to_date) %></p>
+      <p>期限：<%= Entry.date_y_to_string(@task.deadline) %></p>
+      <p>コメント：<%= @task.comment %></p>
+    </div>
+    <div class="second-heading">
+      変更前
+    </div>
+    <div class="entry-form-wrapper">
+      <table>
+        <tr>
+          <th>日付</th>
+          <th>出勤可能時間</th>
+        </tr>
+        <tr>
+          <td><%= Entry.date_to_string(@entry.day) %></td>
+          <% if @entry.attendance %>
+            <td><%= Entry.date_to_string(@entry.day) %></td>
+          <% else %>
+            <td>×</td>
+          <% end %>
+        </tr>
+      </table>
+    </div>
+    <div class="second-heading">
+      変更後
+    </div>
+    <div class="entry-form-wrapper">
+      <p>※出勤可能時間を「0:0-0:0」にすると、表には「フリー」と表示されます。</p>
+      <%= form_with(model: [@task, @entry], local: true) do |form| %>
+      <table>
+      <tr>
+        <th>日付</th>
+        <th colspan="2">出勤可能時間</th>
+      </tr>
+      <tr>
+        <td><%= Entry.date_to_string(@entry.day) %></td>
+        <td>
+          <%= form.radio_button :attendance, true %>出勤可能&nbsp;
+          <%= form.select :from_time_h, Entry.values_h %>:<%= form.select :from_time_m, Entry.values_m %>
+          -
+          <%= form.select :to_time_h, Entry.values_h %>:<%= form.select :to_time_m, Entry.values_m %>
+        </td>
+        <td><%= form.radio_button :attendance, false %>出勤不可</td>
+      </tr>
+      </table>
+      <%= form.submit "更新する", class: "btn form-btn" %>
+      <% end %>
+    </div>
+    <%= link_to("募集詳細に戻る", task_path(@task), class: "btn return-btn") %>
+  </div>
+</div>

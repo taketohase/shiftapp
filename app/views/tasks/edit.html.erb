@@ -1,0 +1,25 @@
+<div class="main">
+  <div class="container">
+    <div class="heading">
+      <%= @task.title %>
+    </div>
+    <div class="task-wrapper">
+      <p>期間：<%= Entry.date_y_to_string(@task.from_date) %>～<%= Entry.date_y_to_string(@task.to_date) %></p>
+      <p>期限：<%= Entry.date_y_to_string(@task.deadline) %></p>
+    </div>
+    <div class="form-error">
+      <% @task.errors.full_messages.each do |message| %>
+        <%= message %><br>
+      <% end %>
+    </div>
+    <div class="form-wrapper">
+      <%= form_with(model: @task, local: true) do |form| %>
+        <p>コメント（200文字以内）</p>
+        <%= form.text_area :comment, size:("40x5") %><br>
+
+        <%= form.submit "更新する", {class: "btn form-btn"} %>
+      <% end %>
+    </div>
+    <%= link_to("募集詳細に戻る", task_path(@task), {class: "btn return-btn"}) %>
+  </div>
+</div>

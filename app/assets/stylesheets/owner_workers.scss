@@ -1,0 +1,19 @@
+// Place all the styles related to the owner_workers controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.owner-worker-wrapper table{
+  border-collapse: collapse;
+  table-layout: fixed;
+  margin: 20px auto;
+}
+.owner-worker-wrapper th, td {
+  border: 1px solid #222933;
+  font-size: 18px;
+  text-align: center;
+  padding: 5px 0;
+}
+.owner-worker-wrapper th {
+  width: 300px;
+}

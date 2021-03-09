@@ -1,0 +1,32 @@
+<div class="form-error">
+  <% @owner.errors.full_messages.each do |message| %>
+    <%= message %><br>
+  <% end %>
+</div>
+
+<div class="form-wrapper">
+  <%= form_with(model: @owner, local: true) do |form| %>
+    <p>名前</p>
+    <p>※氏名や店名など</p>
+    <%= form.text_field :name %><br>
+
+    <p>ユーザーID（4文字以上16文字以内）</p>
+    <%= form.text_field :userid %><br>
+
+    <p>メールアドレス</p>
+    <%= form.text_field :email %><br>
+
+    <!-- フォームがeditに使われる時だけ表示するメッセージ -->
+    <% if @edit_password_message %>
+      <br><p><%= @edit_password_message %></p>
+    <% end %>
+
+    <p>パスワード</p>
+    <%= form.password_field :password %><br>
+
+    <p>パスワード（確認）</p>
+    <%= form.password_field :password_confirmation %><br>
+
+    <%= form.submit "決定", class:"btn form-btn" %>
+  <% end %>
+</div>

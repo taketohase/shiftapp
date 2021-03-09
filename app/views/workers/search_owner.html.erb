@@ -1,0 +1,42 @@
+<div class="main">
+  <div class="container">
+    <div class="heading">
+      管理者を検索
+    </div>
+    <% if @error_message %>
+    <div class="form-error">
+        <%= @error_message %>
+    </div>
+    <% end %>
+    <div class="form-wrapper">
+      <%= form_tag("/workers/search_owner", method: :get) do %>
+        <p>ユーザーＩＤ</p>
+        <%= text_field_tag :userid %><br>
+        <%= submit_tag "検索", class: "btn form-btn" %>
+      <% end %>
+    </div>
+    <div class="second-heading">
+      検索結果
+    </div>
+    <div class="owner-worker-wrapper">
+      <% if @owner %>
+      <table>
+        <tr>
+          <th>名前</th>
+          <th>ユーザーＩＤ</th>
+          <th></th>
+        </tr>
+        <tr>
+          <td><%= @owner.name %></td>
+          <td><%= @owner.userid %></td>
+          <td><%= link_to("登録リクエストを送る", "/requests/#{@owner.id}",
+                      method: :post,
+                      data: { confirm: "リクエストを送信します。" }) %></td>
+        </tr>
+      </table>
+      <% else %>
+        <p>見つかるとここに表示されます</p>
+      <% end %>
+    </div>
+  </div>
+</div>

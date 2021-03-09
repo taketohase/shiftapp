@@ -1,0 +1,22 @@
+// Place all the styles related to the entries controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.entry-form-wrapper {
+  margin: 50px auto;
+  text-align: center;
+}
+.entry-form-wrapper input[type=radio] {
+  width: 20px;
+  height: 15px;
+}
+
+.entry-form-wrapper table {
+  margin: auto;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+.entry-form-wrapper th, td {
+  border: 1px solid #222933;
+  width: 340px;
+}

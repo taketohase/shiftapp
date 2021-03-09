@@ -1,0 +1,65 @@
+<div class="main">
+  <div class="container">
+    <div class="heading">
+      <%= @task.title %>
+    </div>
+    <div class="task-wrapper">
+      <p>作成者：<%= @owner.name %></p>
+      <p>期間：<%= Entry.date_y_to_string(@task.from_date) %>～<%= Entry.date_y_to_string(@task.to_date) %></p>
+      <p>期限：<%= Entry.date_y_to_string(@task.deadline) %></p>
+      <p>コメント：<%= @task.comment %></p>
+      <p>希望登録数：<%= @entries_table.length %>（従業員数：<%= @workers.length %>）</p>
+      <div class="edit-task-btn-wrapper">
+      <% if @current_user.class == Owner %>
+        <%= link_to("コメントを編集する", edit_task_path(@task), class: "btn edit-task-btn") %>
+        <%= link_to("削除する", task_path(@task),
+                            method: :delete,
+                            data: {confirm: "本当に削除してよろしいですか？"},
+                            class: "btn edit-task-btn")%>
+      <% else %>
+        <%= link_to("希望を登録する", new_task_entry_path(@task), class: "btn edit-task-btn") %>
+      <% end %>
+      </div>
+    </div>
+    <div class="task-entries-wrapper">
+      <div class="second-heading">
+        従業員の希望
+      </div>
+      <%= link_to("Excelファイルでダウンロード", task_path(@task, format: :xlsx), class:"btn excel-btn") %>
+      <div class="task-entries-table">
+        <table>
+          <tr>
+            <th>名前</th>
+            <% @days.each do |day| %>
+            <th><%= Entry.date_to_string(day) %></th>
+            <% end %>
+          </tr>
+          <% @workers.each do |worker| %>
+            <!-- ハッシュの要素は
+                 worker.id => [["entry_id", "時間"], ["entry_id","時間"]...]
+                 となっており、バリューの配列の中身はtaskの日数分ある -->
+          <tr>
+            <td><%= worker.name %></td>
+            <!-- entries_tableにこの従業員のentryが存在すれば -->
+            <% if entries = @entries_table[worker.id] %>
+              <% (0..@days.length-1).each do |i| %>
+                <!-- ログイン中のユーザーのデータなら、編集へのリンクとなる -->
+                <% if @current_user.class == Worker && worker.id == @current_user.id %>
+                  <td class="my-entry"><%= link_to("#{entries[i][1]}",
+                                  "/tasks/#{@task.id}/entries/#{entries[i][0].to_i}/edit") %></td>
+                <% else %>
+                  <td><%= entries[i][1] %></td>
+                <% end %>
+              <% end %>
+            <% else %>
+              <% (0..@days.length-1).each do |i| %>
+                <!-- 空のセルを生成　-->
+                <td></td>
+              <% end %>
+            <% end %>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

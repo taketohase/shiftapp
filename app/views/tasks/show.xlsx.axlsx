@@ -1,0 +1,22 @@
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: @task.title) do |sheet|
+  sheet.add_row do |row|
+    row.add_cell("名前")
+    @days.each do |day|
+      row.add_cell(Entry.date_to_string(day))
+    end
+  end
+  @workers.each do |worker|
+    sheet.add_row do |row|
+      row.add_cell(worker.name)
+      if entries = @entries_table[worker.id]
+        (0..@days.length-1).each do |i|
+          row.add_cell(entries[i][1])
+        end
+      else
+        row.add_cell("")
+      end
+    end
+  end
+end

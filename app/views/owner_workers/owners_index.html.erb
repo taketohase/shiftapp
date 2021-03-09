@@ -1,0 +1,33 @@
+<div class="main">
+  <div class="container">
+    <div class="heading">
+      所属一覧
+    </div>
+    <div class="owner-worker-wrapper">
+      <% if @owners.empty? %>
+      <p>
+        まだどこにも所属していません
+      </p>
+      <% else %>
+      <table>
+        <tr>
+          <th>名前</th>
+          <th>ユーザーID</th>
+          <th></th>
+        </tr>
+        <% @owners.each do |owner| %>
+        <% owner_worker = OwnerWorker.find_by(owner_id: owner.id,
+                                              worker_id: @current_user.id) %>
+        <tr>
+          <td><%= owner.name %></td>
+          <td><%= owner.userid %></td>
+          <td><%= link_to("退出する", "/owner_workers/#{owner_worker.id}/destroy",
+                    method: :post,
+                    data: {confirm: "この管理者とのシフト共有を停止します。"}) %></td>
+        </tr>
+      <% end %>
+      </table>
+      <% end %>
+    </div>
+  </div>
+</div>

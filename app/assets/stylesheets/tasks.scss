@@ -1,0 +1,58 @@
+// Place all the styles related to the tasks controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.new-task-btn-wrapper {
+  text-align: right
+}
+.new-task-btn {
+  padding: 10px 100px;
+}
+.tasks-index-wrapper {
+  margin: 20px auto 0px auto;
+  width: 90%;
+}
+.task-wrapper {
+  border-top: 1px solid #222933;
+  border-bottom: 1px solid #222933;
+  margin-bottom: -1px;
+}
+.task-title {
+  color: #222933;
+  font-size: 24px;
+  font-weight: bold;
+}
+.edit-task-btn-wrapper {
+  text-align: center;
+}
+.edit-task-btn {
+  width: 300px;
+  padding: 10px 0;
+  margin: 0px 5px 10px 5px;
+}
+.task-entries-table {
+  overflow: auto;
+}
+/* テーブル */
+.task-entries-table th, td {
+  border: 1px solid #222933;
+  font-size: 16px;
+  text-align: center;
+}
+.task-entries-table table {
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+  margin: 20px 0;
+}
+.task-entries-table th {
+  width: 120px;
+}
+.my-entry {
+  font-weight: bold;
+}
+.excel-btn {
+  padding: 5px;
+  width: 320px;
+  margin: 20px 0;
+}

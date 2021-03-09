@@ -6,7 +6,7 @@
     <div class="task-wrapper">
       <p>作成者：<%= @owner.name %></p>
       <p>期間：<%= Entry.date_y_to_string(@task.from_date) %>～<%= Entry.date_y_to_string(@task.to_date) %></p>
-      <p>期限：<%= Entry.date_y_to_string(@task.deadline) %></p>
+      <p>締め切り：<%= Entry.date_y_to_string(@task.deadline) %></p>
       <p>コメント：<%= @task.comment %></p>
       <p>希望登録数：<%= @entries_table.length %>（従業員数：<%= @workers.length %>）</p>
       <div class="edit-task-btn-wrapper">

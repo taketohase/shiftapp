@@ -23,12 +23,12 @@
         <p>期間</p>
         <%= form.date_field :from_date, class: "date-form" %>から<%= form.date_field :to_date, class:"date-form" %>まで
 
-        <p>期限</p>
+        <p>締め切り</p>
         <%= form.date_field :deadline %><br>
 
         <p>コメント（任意、200文字以内）</p>
         <%= form.text_area :comment, size:("40x5") %><br>
-        
+
         <p>コメント以外は後から編集できません。内容をよくご確認ください。</p>
         <%= form.submit "投稿", class: "btn form-btn" %><br>
       <% end %>

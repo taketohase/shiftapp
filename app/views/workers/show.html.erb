@@ -6,7 +6,7 @@
     <div class="mypage-wrapper">
       <p>名前：<%= @worker.name %></p>
       <p>ユーザーID：<%= @worker.userid %></p>
-      <p>メールアドレス:<%= @worker.email %></p>
+      <p>メールアドレス：<%= @worker.email %></p>
     </div>
     <div class="edit-profile-btn-wrapper">
       <%= link_to("ユーザー情報の編集", edit_worker_path(@worker), {class: "btn edit-profile-btn"}) %>

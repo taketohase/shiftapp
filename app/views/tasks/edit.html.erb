@@ -5,7 +5,7 @@
     </div>
     <div class="task-wrapper">
       <p>期間：<%= Entry.date_y_to_string(@task.from_date) %>～<%= Entry.date_y_to_string(@task.to_date) %></p>
-      <p>期限：<%= Entry.date_y_to_string(@task.deadline) %></p>
+      <p>締め切り：<%= Entry.date_y_to_string(@task.deadline) %></p>
     </div>
     <div class="form-error">
       <% @task.errors.full_messages.each do |message| %>

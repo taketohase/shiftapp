@@ -23,11 +23,7 @@
         </tr>
         <tr>
           <td><%= Entry.date_to_string(@entry.day) %></td>
-          <% if @entry.attendance %>
-            <td><%= Entry.date_to_string(@entry.day) %></td>
-          <% else %>
-            <td>×</td>
-          <% end %>
+          <td><%= @entry.time_to_string %></td>
         </tr>
       </table>
     </div>

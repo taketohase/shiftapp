@@ -41,7 +41,10 @@ class TasksController < ApplicationController
     respond_to do |format|
       # htmlなら、通常通りテンプレートを表示する。
       format.html
-      # xlsxなら、ファイルをダウンロードさせる。ファイル名は"今日の日付.xlsx"。
+      # xlsxなら、ファイルをダウンロードさせる。
+      # Content-Dispositionで、ウェブページ（又はその一部）として表示するか、ダウンロードファイル
+      # とするか選べる。attachmentを指定したので、ダウンロードファイルとなる。
+      # ファイル名は"今日の日付.xlsx"。
       format.xlsx do
         response.headers['Content-Disposition'] = "attachment; filename=#{Date.today}.xlsx"
       end

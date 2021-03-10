@@ -15,8 +15,11 @@
   margin: auto;
   border-collapse: collapse;
   table-layout: fixed;
+  width: 90%;
 }
 .entry-form-wrapper th, td {
   border: 1px solid #222933;
-  width: 340px;
+}
+.entry-form-wrapper th:nth-of-type(1) {
+  width: 15%;
 }

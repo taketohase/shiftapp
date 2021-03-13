@@ -137,7 +137,7 @@ owner_id (integer) | worker_id (integer)
 #### 複数レコード一括保存用のコレクションモデル
   従業員がシフト希望を登録する際、その対象となる期間の日数に応じて入力フォーム数を変えて、それらを同時に保存する必要がありました。下の画像は、4/1～4/3のシフトに対する登録フォームです。登録ボタン一つで、3つのレコードを同時に保存する必要がある例です。  
   ![new_entry_form](https://github.com/taketohase/README_images/blob/main/new_entry_form.JPG)  
-  このために、専用のコレクションモデルの作成、使用をしてみました。以下コードへのリンクです。  
+  このために、専用のコレクションモデルを作成、使用しました。以下コードへのリンクです。  
   [entry_collection.rb](https://github.com/taketohase/shiftapp/blob/master/app/models/form/entry_collection.rb)  
   [entries_controller.rb](https://github.com/taketohase/shiftapp/blob/master/app/controllers/entries_controller.rb)  
   [new.html.erb](https://github.com/taketohase/shiftapp/blob/master/app/views/entries/new.html.erb)  
@@ -160,8 +160,8 @@ owner_id (integer) | worker_id (integer)
 #### Excel出力
   従業員の希望表を編集しやすい形で手元に残せた方が便利かもしれないと思い、Excelファイルとしてダウンロードできる機能を付けました。シフト希望表の上にある「Excelファイルとしてダウンロード」ボタンからダウンロードできます。axlsx(gem)を使用しています。レイアウトは[show.xlsx.axlsx](https://github.com/taketohase/shiftapp/blob/master/app/views/tasks/show.xlsx.axlsx)で行っています。
 
-#### Gitの使い方, herokuでのデプロイ
-  このアプリを作成、公開してみようとするまでGitを使ったことがなかったので、使い方を理解するのは大変でした。また、herokuでのデプロイも、ローカルで動かすのと環境が違うため、設定に何度か躓きました。まだ使いこなせているとは言えませんが、この機会にこれらの使用に触れられたことは良かったと思います。
+#### Gitの使い方、herokuでのデプロイ
+  このアプリを作成、公開してみようとするまでGitを使ったことがなかったので、使い方を理解するのが大変でした。また、herokuでのデプロイも、ローカルで動かす時と環境が違うため、設定に何度か躓きました。まだ使いこなせているとは言えませんが、この機会にこれらの使用に触れられたことは良かったと思います。
 
 ## 製作者
 [taketohase](https://github.com/taketohase)

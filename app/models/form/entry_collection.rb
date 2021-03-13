@@ -7,7 +7,6 @@ class Form::EntryCollection < Form::Base
     self.entries = form_count.times.map { Entry.new() } unless self.entries.present?
   end
 
-  # 上でsuper attributesとしているので必要
   def entries_attributes=(attributes)
     # attributesハッシュ内の値の部分を引数にして、インスタンスを作成する。
     self.entries = attributes.map { |_, value| Entry.new(value) }

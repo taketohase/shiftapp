@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   before_action :authenticate_user
+  before_action :ensure_correct_user_for_show, {only: [:show]}
   before_action :permit_only_owner, {only: [:new, :create]}
   before_action :ensure_correct_owner, {only: [:edit, :update, :destroy]}
 
@@ -110,6 +111,27 @@ class TasksController < ApplicationController
     if !(@current_user.class == Owner && @task.owner_id == @current_user.id)
       flash[:notice] = "権限がありません"
       redirect_to("/")
+    end
+  end
+
+  # show用のユーザー認証。
+  def ensure_correct_user_for_show
+    @task = Task.find(params[:id])
+    # 管理者としてログインしている場合
+    if @current_user.class == Owner
+      # 自分の作成したtask出なければ閲覧できない。
+      if @current_user.id != @task.owner_id
+        flash[:notice] = "権限がありません"
+        redirect_to("/")
+      end
+    # 従業員としてログインしている場合
+    else
+      # そのtaskの管理者と自分がowner_workerの関係になければ閲覧できない。
+      @owner_worker = OwnerWorker.find_by(owner_id: @task.owner_id, worker_id: @current_user.id)
+      if @owner_worker == nil
+        flash[:notice] = "権限がありません"
+        redirect_to("/")
+      end
     end
   end
 end

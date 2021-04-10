@@ -1,6 +1,7 @@
 class EntriesController < ApplicationController
   before_action :authenticate_user
   before_action :permit_only_worker
+  before_action :ensure_correct_woeker_for_new, {only: [:new, :create]}
   before_action :ensure_correct_worker, {only: [:edit, :update]}
 
   def new
@@ -58,6 +59,17 @@ class EntriesController < ApplicationController
   def ensure_correct_worker
     @entry = Entry.find(params[:id])
     if !(@current_user.class == Worker && @entry.worker_id == @current_user.id)
+      flash[:notice] = "権限がありません"
+      redirect_to("/")
+    end
+  end
+
+  # entryを登録しようとするとき、対象のtaskがアクセス可能なものであるか確認する。
+  def ensure_correct_woeker_for_new
+    @task = Task.find(params[:task_id])
+    # そのtaskの管理者と自分がowner_workerの関係になければ実行できない。
+    @owner_worker = OwnerWorker.find_by(owner_id: @task.owner_id, worker_id: @current_user.id)
+    if @owner_worker == nil
       flash[:notice] = "権限がありません"
       redirect_to("/")
     end
